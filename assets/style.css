@@ -17,7 +17,7 @@ li.dict {
   border-bottom: 1px solid #e7e7eb;
 }
 
-.playing:after {
+.playing:before {
   content: url('playing.gif');
   float: right;
   margin-top: 10px;
