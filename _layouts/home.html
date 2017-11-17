@@ -66,6 +66,9 @@
         play(next);
       }
     }
+    player.play = function() {
+      playing.classList.add("playing");
+    }
 
     function play(el) {
       if (el != playing) {
@@ -80,11 +83,7 @@
       }
 
       if (player.paused) {
-        player.play().then(function(){
-          if (!player.paused) {
-            playing.classList.add("playing");
-          }
-        });
+        player.play();
       }
 
       return false;
