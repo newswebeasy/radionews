@@ -77,11 +77,12 @@
         if (last) {
           last.classList.remove("playing");
         }
-        playing.classList.add("playing");
       }
 
       if (player.paused) {
-        player.play();
+        player.play().then(function(){
+          playing.classList.add("playing");
+        });
       }
 
       return false;
