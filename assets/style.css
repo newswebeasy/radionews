@@ -15,17 +15,18 @@ li.dict {
 
 .card {
   display: block;
+  padding: 8px 0;
   border-bottom: 1px solid #e7e7eb;
 }
 
 .playing:before {
   content: url('playing.gif');
   float: right;
-  margin-top: 10px;
 }
 
 .card .newstitle {
   font-size: 16px;
+  line-height: 30px;
 }
 
 .card .newsdate {
