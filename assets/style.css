@@ -16,6 +16,9 @@ li.dict {
 .card {
   display: block;
   padding: 8px 0;
+}
+
+.card:not(:last-of-type) {
   border-bottom: 1px solid #e7e7eb;
 }
 
