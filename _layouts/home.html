@@ -81,7 +81,9 @@
 
       if (player.paused) {
         player.play().then(function(){
-          playing.classList.add("playing");
+          if (!player.paused) {
+            playing.classList.add("playing");
+          }
         });
       }
 
