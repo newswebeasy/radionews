@@ -16,19 +16,17 @@
           <div class="rich_media_content">
 
             <p>
-              <audio id="player" class="fullwidth" src="{{ page.voice_url }}" controls loop autoplay style="margin:20px 0; width:100%"></audio>
+              <audio id="player" class="fullwidth" controls style="margin:20px 0; width:100%"></audio>
             </p>
 
             <div class="newslist">
-            {% for item in site.data.newslist.news reversed %}
-            <div class="card">
-            <a href="#" onclick="play({{ forloop.index0 }});return false;">
+            {% for item in site.data.newslist.news %}
+            <a class="card" href="#" onclick="return play(this)" data-id="{{ item.id }}">
               <div>
                 <h2 class="newstitle">{{ item.title }}</h2>
-                <p class="newsdate">{{ item.startdate }}</p>
+                <p class="newsdate">{{ item.startdate }} {{item.duration}}</p>
               </div>
             </a>
-            </div>
             {% endfor %}
             </div>
 
@@ -50,38 +48,42 @@
   </div>
 
   <script type="text/javascript">
-    var cur = -1;
-    var urls = [
-    {% for item in site.data.newslist.news reversed %}
-    '{{ item.soundlist.sound_normal.filename }}'{% unless forloop.last %},{% endunless %}
-    {% endfor %}
-    ];
+    function geturl(id) {
+      return 'http://www.nhk.or.jp/r-news/ondemand/mp3/' + id + '.mp3'
+    }
+
+    var playing = null;
+    var playlist = document.getElementsByClassName('card');
 
     var player = document.getElementById('player');
+    player.load();
 
     player.onended = function() {
-      var i = (cur + 1) % urls.length;
-      play(i);
+      var next = playing.nextElementSibling || playlist[0];
+      play(next);
     }
 
-    function play(i) {
-      if (i != cur) {
-        var last = cur;
-        cur = i;
-        console.log(last + '->' + cur)
-        player.src = 'http://www.nhk.or.jp/r-news/ondemand/mp3/' + urls[cur] + '.mp3';
+    function play(el) {
+      if (el != playing) {
+        var last = playing;
+        playing = el;
+        player.src = geturl(playing.dataset.id);
         player.load();
-        player.play();
 
-        var l = document.getElementsByClassName('card');
-        if (last >= 0) {
-          l[last].firstElementChild.classList.remove("playing");
+        if (last) {
+          last.classList.remove("playing");
         }
-        l[cur].firstElementChild.classList.add("playing");
+        playing.classList.add("playing");
       }
+
+      if (player.paused) {
+        player.play();
+      }
+
+      return false;
     }
 
-    play(0);
+    play(playlist[0]);
   </script>
 
 </body>
