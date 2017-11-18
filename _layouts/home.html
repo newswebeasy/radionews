@@ -5,41 +5,43 @@
 <body class="zh_CN mm_appmsg">
   <div class="rich_media">
     <div class="rich_media_inner">
-      <div>
 
-        <div class="rich_media_area_primary">
+      <div class="rich_media_area_primary">
 
-          <h2 class="rich_media_title"><img style="height: 24px;" src="{{ '/assets/logo.png' | relative_url }}" />{{ site.title }}</h2>
-          <div class="rich_media_meta_list">
-            <em class="rich_media_meta rich_media_meta_text">{{ site.data.newslist.lastBuildDate }}</em>
-            <a class="rich_media_meta rich_media_meta_link rich_media_meta_nickname" href="/">NewsWebEasy</a>
-          </div>
-
-          <div class="rich_media_content">
-            <p>
-              <audio id="player" class="fullwidth" controls style="margin:20px 0; width:100%"></audio>
-            </p>
-
-            <div class="newslist">
-              {% for item in site.data.newslist.news %}
-              <a class="card" href="#" onclick="return play(this)" data-id="{{ item.id }}">
-                <h2 class="newstitle">{{ item.title }}</h2>
-                <p class="newsdate" style="float: right;">{{item.duration}}</p>
-                <p class="newsdate">{{ item.startdate }}</p>
-              </a>
-              {% endfor %}
-            </div>
-          </div>
-
+        <h2 class="rich_media_title"><img style="height: 24px;" src="{{ '/assets/logo.png' | relative_url }}" />{{ site.title }}</h2>
+        <div class="rich_media_meta_list">
+          <em class="rich_media_meta rich_media_meta_text">{{ site.data.newslist.lastBuildDate }}</em>
+          <a class="rich_media_meta rich_media_meta_link rich_media_meta_nickname" href="/">NewsWebEasy</a>
         </div>
 
-        <div class="rich_media_area_extra">
-          <div class="mpda_bottom_container">
-            {% include adsense_radionews.html %}
+        <div class="rich_media_content">
+          <p>
+            <audio id="player" class="fullwidth" controls style="margin:20px 0; width:100%"></audio>
+          </p>
+
+          <div class="newslist">
+            {% for item in site.data.newslist.news %}
+            <a class="card" href="#" onclick="return play(this)" data-id="{{ item.id }}">
+              <h2 class="newstitle">{{ item.title }}</h2>
+              <p class="newsdate" style="float: right;">{{item.duration}}</p>
+              <p class="newsdate">{{ item.startdate }}</p>
+            </a>
+            {% endfor %}
           </div>
         </div>
 
+        <div class="rich_media_tool">
+          <a class="media_tool_meta meta_primary" href="/news/easy/playlist">イージーニュース</a>
+          <a class="media_tool_meta meta_primary" href="/news/web/playlist">普通のニュース</a>
+        </div>
       </div>
+
+      <div class="rich_media_area_extra">
+        <div class="mpda_bottom_container">
+          {% include adsense_radionews.html %}
+        </div>
+      </div>
+
     </div>
   </div>
 
