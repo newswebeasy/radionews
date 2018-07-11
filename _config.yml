@@ -1,12 +1,11 @@
 title: ラジオニュース
 description: >-
-  ラジオニュース
+  ラジオニュース。日本、そして世界の動きをわかりやすく、深く多角的にお伝えします。ラジオ第1で放送された、けさのニュース、正午のニュース、きょうのニュース、列島リレーニュース、ジャーナルが再生できます。
 baseurl: "/radionews"
 url: ""
-
-source_url: "http://www.nhk.or.jp/radionews/"
 
 markdown: kramdown
 plugins:
   - jekyll-feed
+  - jekyll-sitemap
 
