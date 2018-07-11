@@ -1,1 +1,1 @@
-[ラジオニュース](https://newswebeasy.github.io/radionews/)
+[ラジオ・ニュース](https://newswebeasy.github.io/radionews/)
